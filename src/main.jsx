@@ -1,49 +1,54 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./index.css";
-import Main from './Layout/Main';
-import Instructors from './pages/Instructors/Instructors';
-import Classes from './pages/Classes/Classes';
-import Dashboard from './Layout/Dashboard';
-import Login from './pages/Login/Login';
-import Home from './pages/Home/Home';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import Main from "./Layout/Main";
+import Instructors from "./pages/Instructors/Instructors";
+import Classes from "./pages/Classes/Classes";
+import Dashboard from "./Layout/Dashboard";
+import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import AuthProvider from "./Provider/AuthProvider";
+import Register from "./pages/Login/Register";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'instructors',
-        element:<Instructors></Instructors>
+        path: "instructors",
+        element: <Instructors></Instructors>,
       },
       {
-        path:'/classes',
-        element:<Classes></Classes>
+        path: "/classes",
+        element: <Classes></Classes>,
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path:"/register",
+        element:<Register></Register>
       }
-    ]
+    ],
   },
   {
-    path:'/Dashboard',
-    element:<Dashboard></Dashboard>
-  }
+    path: "/Dashboard",
+    element: <Dashboard></Dashboard>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+      <AuthProvider>
+      <RouterProvider router={router} />
+  </AuthProvider>
+    </React.StrictMode>
 );

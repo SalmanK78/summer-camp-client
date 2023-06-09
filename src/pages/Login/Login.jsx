@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data =>{
-        console.log(data)
-        console.log(data.name,data.email,data.password)
+       
     };
     console.log(watch("example"));
   return (
