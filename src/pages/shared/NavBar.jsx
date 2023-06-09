@@ -3,10 +3,13 @@ import { useAuth } from "../../hooks/useAuth";
 
 
 const NavBar = () => {
-    const {user} = useAuth()
+    const {user,logOut} = useAuth()
     const photo = 'https://pbs.twimg.com/profile_images/898054973510103040/EjHmKOk__400x400.jpg'
     const handleLogOut = () => {
-        
+        logOut()
+        .then(res =>{
+
+        })
     }
     
     const options = <>
@@ -37,7 +40,7 @@ const NavBar = () => {
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">Summer Camp</a>
                 </div>
-                <div className="navbar-center invisible lg:visible">
+                <div className="navbar-center invisible lg:relative absolute lg:visible">
                     <ul className="menu menu-horizontal px-1">
                         {options}
                     </ul>

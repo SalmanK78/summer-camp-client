@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { Link } from 'react-router-dom';
 
 const Banner = () => {
@@ -6,7 +7,7 @@ const Banner = () => {
     <div className="text-white w-full relative
     ">
       <div
-        className="md:h-[600px] h-[95vh]"
+        className="md:h-[600px]"
         style={{
           width: "100%",
           backgroundRepeat: "no-repeat",
@@ -22,7 +23,9 @@ const Banner = () => {
         <div className="flex justify-between md:flex-row flex-col md:pt-0 pt-20">
           <div className="flex flex-col justify-center md:items-start items-center gap-5 ml-7 text-center md:text-left">
             <h1 className="lg:text-7xl md:text-5xl text-4xl font-bold">
-              Lorem ipsum dolor sit
+              <Fade>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </Fade>
             </h1>
             <p className="font-bold text-2xl ">Lorem ipsum dolor sit amet consectetur.</p>
             <Link

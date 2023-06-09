@@ -1,11 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Register = () => {
     const {createUser ,updateUser} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data =>{
        createUser(data.email,data.password)
@@ -18,7 +23,7 @@ const Register = () => {
             showConfirmButton: false,
             timer: 1500
         });
-        
+        navigate(from, { replace: true });
        })
     };
     console.log(watch("example"));

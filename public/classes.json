@@ -1,0 +1,93 @@
+[
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Emily Johnson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Piano Basics",
+      "seats": 10,
+      "price": 49.99,
+      "description": "In this class, you will learn the fundamentals of playing the piano. Whether you're a complete beginner or have some experience, this class will guide you through the basics of piano playing, including hand positioning, reading sheet music, and playing simple melodies."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Emily Johnson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Guitar Fundamentals",
+      "seats": 8,
+      "price": 59.99,
+      "description": "This class is designed for those who want to learn how to play the guitar from scratch. You will start with the basics, such as holding the guitar, strumming techniques, and playing basic chords. By the end of the class, you will be able to play some popular songs and have a solid foundation to continue your guitar journey."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Sarah Davis",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Vocal Training",
+      "seats": 12,
+      "price": 79.99,
+      "description": "If you have a passion for singing and want to improve your vocal skills, this class is perfect for you. You will learn proper breathing techniques, vocal warm-ups, and exercises to strengthen your voice. The class will cover various genres and help you develop your own unique singing style."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "David Wilson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Drum Lessons",
+      "seats": 6,
+      "price": 69.99,
+      "description": "In this class, you will learn the basics of drumming, including proper drumstick grip, rhythm patterns, and drumming techniques. Whether you're a beginner or have some experience, this class will help you improve your drumming skills and develop a solid foundation in playing the drums."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Sophia Roberts",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Violin Techniques",
+      "seats": 8,
+      "price": 89.99,
+      "description": "This class is designed for beginners who want to learn how to play the violin. You will learn proper violin posture, bowing techniques, and finger placements. The class will cover essential violin techniques and help you play simple melodies and tunes."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Daniel Smith",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Music Theory",
+      "seats": 15,
+      "price": 39.99,
+      "description": "If you want to deepen your understanding of music and improve your composition skills, this class is for you. You will learn music theory concepts, such as scales, chords, and harmonies. The class will also cover analyzing music and applying theory in your own compositions."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Olivia Johnson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Bass Guitar Basics",
+      "seats": 6,
+      "price": 69.99,
+      "description": "This class is for beginners who want to learn how to play the bass guitar. You will learn the fundamentals, including proper finger placement, playing techniques, and basic music theory for bass. The class will cover various music genres and help you develop your bass playing skills."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Benjamin Davis",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Songwriting Workshop",
+      "seats": 12,
+      "price": 59.99,
+      "description": "In this workshop, you will learn the art of songwriting. The class will cover different songwriting techniques, such as melody writing, chord progressions, and lyrical composition. Whether you're a beginner or already write songs, this workshop will help you refine your skills and develop your unique musical voice."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Emma Thompson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Flute Lessons",
+      "seats": 10,
+      "price": 49.99,
+      "description": "In this class, you will learn how to play the flute from scratch. You will start with the basics, including proper embouchure, fingerings, and breathing techniques. The class will cover different musical styles, from classical to contemporary, and help you become a proficient flutist."
+  },
+  {
+      "image": "https://img.freepik.com/free-photo/beautiful-constellations-tent-outdoors_23-2149988829.jpg?size=626&ext=jpg&ga=GA1.1.1385022456.1686185341&semt=sph",
+      "instructor": "Lucas Wilson",
+      "instructor_img":"https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200",
+      "name": "Saxophone Techniques",
+      "seats": 8,
+      "price": 79.99,
+      "description": "This class is for beginners who want to learn how to play the saxophone. You will learn saxophone fundamentals, including proper embouchure, fingerings, and breath control. The class will cover various saxophone techniques and help you play melodies and improvisations in different music genres."
+  }
+]
+  
