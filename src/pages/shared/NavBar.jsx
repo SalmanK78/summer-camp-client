@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 
 const NavBar = () => {
-    const user = true
+    const {user} = useAuth()
+    const photo = 'https://pbs.twimg.com/profile_images/898054973510103040/EjHmKOk__400x400.jpg'
     const handleLogOut = () => {
         
     }
@@ -14,7 +16,7 @@ const NavBar = () => {
         {
             user ? <>
                 <li><Link to="/dashboard">Dashboard</Link></li>
-                <li onClick={handleLogOut}><Link to="/login">LogOut</Link></li>
+                <li onClick={handleLogOut}><Link>LogOut</Link></li>
             </> : <>
                 <li><Link to="/login">Login</Link></li>
             </>
@@ -43,7 +45,7 @@ const NavBar = () => {
         </div>
                 <div className="navbar-end">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="" />
+                    <img src={user?.photoURL? `${user.photoURL}`: `${photo}`} alt="" />
                 </div>
                 </div>
             </div>

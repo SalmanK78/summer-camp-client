@@ -1,17 +1,31 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const {createUser ,updateUser} = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data =>{
-       
+       createUser(data.email,data.password)
+       .then(res =>{
+        updateUser(data.name,data.photo)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'User created successfully.',
+            showConfirmButton: false,
+            timer: 1500
+        });
+        
+       })
     };
     console.log(watch("example"));
   return (
     <div>
       <div className="max-w-md mx-auto py-5 px-5 md:px-20 mt-20">
-        <form  className="bg-white">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white">
           <h1 className="text-gray-800 font-bold text-2xl mb-1">Register!!!</h1>
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
             <svg
@@ -55,7 +69,7 @@ const Register = () => {
             </div>
             <input
               className="pl-2 outline-none border-none"
-              type="text"
+              type="url"
               name="photo"
               {...register("photo")}
               id="photo"
@@ -143,7 +157,7 @@ const Register = () => {
           >
             Register
           </button>
-          <span className="text-sm ml-2 cursor-pointer">
+          <span className="text-sm ml-2  cursor-pointer">
             <Link to="/login">
               <span>Already have an acount </span>
               <button className="btn-link  hover:text-blue-500"> Login</button>

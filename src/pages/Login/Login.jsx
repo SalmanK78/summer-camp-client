@@ -1,13 +1,33 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {signIn} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data =>{
-       
+
+       signIn(data.email,data.password)
+       .then(res=>{
+        Swal.fire({
+            title: 'User Login Successful.',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+        navigate(from, { replace: true });
+       })
     };
-    console.log(watch("example"));
+    // console.log(watch("example"));
   return (
     <div>
       <div className="max-w-md md:px-20 m-auto py-5 px-5 mt-20">
@@ -114,7 +134,7 @@ const Login = () => {
               Sign in with GitHub
             </button>
           </div>
-          <span className="text-sm ml-2 cursor-pointer">
+          <span className="text-sm cursor-pointer">
             <Link to="/register">
               <span>Don’t have an account yet? </span>
               <button className="btn-link  hover:text-blue-500">
