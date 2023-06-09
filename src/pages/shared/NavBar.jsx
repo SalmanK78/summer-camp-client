@@ -10,7 +10,7 @@ const NavBar = () => {
     const options = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
-        <li><Link to="/">Classes</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         {
             user ? <>
                 <li><Link to="/dashboard">Dashboard</Link></li>
@@ -23,7 +23,7 @@ const NavBar = () => {
 
     return (
         <>
-            <div className=" navbar fixed max-w-screen-xl bg-gray-100 shadow-2xl rounded-md text-black">
+            <div className=" navbar  max-w-screen-xl bg-gray-100 shadow-2xl rounded-md text-black">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,8 +39,8 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1">
                         {options}
                     </ul>
-
-                </div>
+            
+        </div>
                 <div className="navbar-end">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="" />

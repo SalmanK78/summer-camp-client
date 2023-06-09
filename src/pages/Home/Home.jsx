@@ -1,12 +1,13 @@
 import React from 'react';
-import NavBar from '../shared/NavBar';
+import Banner from './Banner';
+
 
 const Home = () => {
     return (
-        <div className='mx-auto max-w-7xl'>
-            <NavBar></NavBar>
+        <div className=''>
+            <Banner></Banner>
         </div>
     );
-};
+}; 
 
 export default Home;

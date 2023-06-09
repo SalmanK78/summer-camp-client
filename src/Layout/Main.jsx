@@ -1,10 +1,14 @@
 import React from 'react';
 import Home from '../pages/Home/Home';
+import NavBar from '../pages/shared/NavBar';
+import { Outlet } from 'react-router-dom';
+import Header from '../pages/Home/Banner';
 
 const Main = () => {
     return (
-        <div>
-            <Home></Home>
+        <div className='mx-auto max-w-7xl'>
+            <NavBar></NavBar>
+            <Outlet></Outlet>
         </div>
     );
 };
