@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
     const {createUser ,updateUser} = useAuth();
@@ -16,6 +17,10 @@ const Register = () => {
        createUser(data.email,data.password)
        .then(res =>{
         updateUser(data.name,data.photo)
+        axios.post('http://localhost:5000/users',{name:data.name,email:data.email})
+        .then(data=>{
+          console.log(data)
+        })
         Swal.fire({
             position: 'top-end',
             icon: 'success',
