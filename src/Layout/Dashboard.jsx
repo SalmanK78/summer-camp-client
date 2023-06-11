@@ -1,19 +1,14 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import {
-  FaShoppingCart,
-  FaWallet,
-  FaCalendarAlt,
   FaHome,
-  FaUtensils,
-  FaBook,
-  FaUsers,
 } from "react-icons/fa";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
 
-
+  const[isInstructo] = useInstructor()
   const isAdmin = true;
-  const isInstructor = true
+  const isInstructor = isInstructo
 
   return (
     
@@ -34,7 +29,14 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
+            {isAdmin ? <>
+              <li><NavLink to="allusers">All Users</NavLink></li>
+              <li><NavLink to="requests">Requests</NavLink></li>
+            </>:<>
             <li><NavLink to="selectedclasses">Selected Classes</NavLink></li>
+            </>
+
+            }
             {isInstructor &&
                 <div>
                     <li><NavLink to="myclasses">My Classes</NavLink></li>

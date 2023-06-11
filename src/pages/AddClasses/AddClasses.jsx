@@ -13,7 +13,7 @@ const AddClasses = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-            const addInfo =  {instructor:data.name,image:data.image,name:data.name,price:data.price,instructor_img:data.instructor_img,seats:data.seats,email:user?.email}
+            const addInfo =  {instructor:data.instructor,image:data.image,name:data.name,price:data.price,instructor_img:data.instructor_img,seats:data.seats,email:user?.email}
             console.log(addInfo)
             axios.post('http://localhost:5000/classes', {addInfo})
                 .then(data =>{

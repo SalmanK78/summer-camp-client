@@ -20,6 +20,8 @@ import {
 import MyClasses from "./pages/Dashboard/MyClasses";
 import SelectedClasses from "./pages/Dashboard/SelectedClasses";
 import InstructorRequest from "./pages/InstructorRequest/InstructorRequest";
+import Requests from "./pages/Dashboard/Requests";
+import AllUsers from "./pages/Dashboard/AllUsers";
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
       {
         path:"/register",
         element:<Register></Register>
-      }
+      },
     ],
   },
   {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
       {
         path:'selectedclasses',
         element:<SelectedClasses></SelectedClasses>
+      },
+      {
+        path:"requests",
+        element:<Requests/>
+      },
+      {
+        path:"allUsers",
+        element:<AllUsers/>
       }
     ]
   },
