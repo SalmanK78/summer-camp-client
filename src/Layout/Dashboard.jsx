@@ -6,16 +6,15 @@ import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
 
-  const[isInstructo] = useInstructor()
-  const isAdmin = true;
-  const isInstructor = isInstructo
+  const[isInstructor] = useInstructor()
+  const isAdmin = false;
 
   return (
     
     <div className="max-w-7xl mx-auto">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="mx-5 drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
           <Outlet></Outlet>
           <label

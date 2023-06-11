@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const {signIn} = useAuth();
@@ -15,6 +16,10 @@ const Login = () => {
 
        signIn(data.email,data.password)
        .then(res=>{
+        axios.post('http://localhost:5000/users',{name:data.name,email:data.email})
+        .then(data=>{
+          console.log(data)
+        })
         Swal.fire({
             title: 'User Login Successful.',
             showClass: {
@@ -51,10 +56,11 @@ const Login = () => {
             <input
               className="pl-2 outline-none border-none"
               type="text"
+              name="name"
               {...register("name")}
-              name=""
               id=""
               placeholder="Username"
+              required
             />
           </div>
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

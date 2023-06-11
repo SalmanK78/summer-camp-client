@@ -3,12 +3,19 @@ import { useAuth } from "../../hooks/useAuth";
 import dataLoader from "../../hooks/dataLoader";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 
 const SelectedClasses = () => {
     const { user } = useAuth();
-    const [loadedData, refetch] = dataLoader(`selected?email=${user?.email}`)
-    console.log(loadedData)
+    // const [loadedData, refetch] = dataLoader(`selected?email=${user?.email}`)
+    const {data:loadedData = [], isLoading:loading,refetch} = useQuery({
+      queryKey:['selected',user?.email],
+      queryFn:async()=>{
+          const res = await axios.get(`http://localhost:5000/selected?email=${user?.email}`)
+          return res.data
+      }
+  })
     const handleDelete = (id)=>{
         console.log(id)
         axios.delete(`http://localhost:5000/selected/${id}`)
@@ -20,7 +27,7 @@ const SelectedClasses = () => {
         })  
     }
   return (
-    <div className="border w-full ml-5">
+    <div className="border w-full">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -45,7 +52,7 @@ const SelectedClasses = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src={data.image}
+                          src={data.image || 'https://img.freepik.com/free-icon/user_318-159711.jpg'}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>

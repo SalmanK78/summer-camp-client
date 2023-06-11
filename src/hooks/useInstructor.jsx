@@ -8,7 +8,7 @@ const useInstructor = () => {
         queryKey:['isAdmin',user?.email],
         queryFn:async()=>{
             const res = await axios.get(`http://localhost:5000/user/instructor/${user?.email}`)
-            return res.data
+            return res.data.instructor
         }
     })
     return [isInstructor,isInstructorLoading]

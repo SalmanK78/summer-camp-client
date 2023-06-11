@@ -13,10 +13,15 @@ const Requests = () => {
             refetch()
         })
   }
+  const handleDelete=(id)=>{
+    axios.delete(`http://localhost:5000/requests${id}`)
+        .then(res =>{
+            refetch()
+        })
+  }
 
   return (
-    <div>
-      <div className="border w-full ml-5">
+      <div className="border w-full">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -38,8 +43,8 @@ const Requests = () => {
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
-                            src={data.image}
-                            alt="Avatar Tailwind CSS Component"
+                            src={data.image || 'https://img.freepik.com/free-icon/user_318-159711.jpg'}
+                            alt="Avatar"
                           />
                         </div>
                       </div>
@@ -61,7 +66,7 @@ const Requests = () => {
 
                       </button>
                       <button
-                        onClick={() => handleDenie(data._id)}
+                        onClick={() => handleDelete(data._id)}
                         className="text-red-500"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -77,7 +82,6 @@ const Requests = () => {
           </table>
         </div>
       </div>
-    </div>
   );
 };
 

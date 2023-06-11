@@ -18,7 +18,7 @@ const MyClasses = () => {
     })  
 }
   return (
-    <div className="border w-full ml-5">
+    <div className="border w-full ">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -42,8 +42,8 @@ const MyClasses = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src={data.image}
-                          alt="Avatar Tailwind CSS Component"
+                          src={data.image || 'https://img.freepik.com/free-icon/user_318-159711.jpg'}
+                          alt="Avatar"
                         />
                       </div>
                     </div>

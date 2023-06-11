@@ -17,7 +17,7 @@ const Register = () => {
        createUser(data.email,data.password)
        .then(res =>{
         updateUser(data.name,data.photo)
-        axios.post('http://localhost:5000/users',{name:data.name,email:data.email})
+        axios.post('http://localhost:5000/users',{name:data.name,email:data.email,image:data.photo})
         .then(data=>{
           console.log(data)
         })
@@ -84,6 +84,7 @@ const Register = () => {
               {...register("photo")}
               id="photo"
               placeholder="Photo Url"
+              required
             />
           </div>
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

@@ -7,9 +7,9 @@ const Card = ({data}) => {
     const {user} = useAuth();
     const [,refetch] = dataLoader('classes')
     const handleSelect=(item)=>{
-      console.log(item._id)
-
+      if(user){
         axios.post(`http://localhost:5000/selected`,{item,email:user.email})
+      }
     }
     const handleEnroll=(id)=>{
       axios.patch(`http://localhost:5000/classes/${id}`)

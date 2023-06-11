@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 import { useAuth } from './useAuth';
 import axios from 'axios';
 
@@ -12,7 +11,7 @@ const dataLoader = (path) => {
             return res.data
         }
     })
-    return [loadedData,refetch]
+    return [loadedData,refetch,loading]
 }
 
 export default dataLoader;
