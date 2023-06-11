@@ -19,6 +19,7 @@ import {
 } from '@tanstack/react-query'
 import MyClasses from "./pages/Dashboard/MyClasses";
 import SelectedClasses from "./pages/Dashboard/SelectedClasses";
+import InstructorRequest from "./pages/InstructorRequest/InstructorRequest";
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes></Classes>,
+      },
+      {
+        path:"instructorreq",
+        element:<PrivateRoute><InstructorRequest></InstructorRequest></PrivateRoute>
       },
       {
         path:"/addclasses",

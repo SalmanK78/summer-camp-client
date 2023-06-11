@@ -8,6 +8,7 @@ const Card = ({data}) => {
     const [,refetch] = dataLoader('classes')
     const handleSelect=(item)=>{
       console.log(item._id)
+
         axios.post(`http://localhost:5000/selected`,{item,email:user.email})
     }
     const handleEnroll=(id)=>{
