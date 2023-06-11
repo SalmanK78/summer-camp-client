@@ -45,8 +45,7 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1">
                         {options}
                     </ul>
-            
-        </div>
+                </div>
                 <div className="navbar-end">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
                     <img src={user?.photoURL? `${user.photoURL}`: `${photo}`} alt="" />
