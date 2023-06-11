@@ -9,7 +9,13 @@ const MyClasses = () => {
   const [loadedData, refetch] = dataLoader(`addedclasses?email=${user?.email}`)
   const handleDelete = (id)=>{
     console.log(id)
-     
+    axios.delete(`http://localhost:5000/addedclasses/${id}`)
+    .then(res =>{
+        console.log(res)
+        if(res.data.deletedCount > 0){
+            refetch()
+        }
+    })  
 }
   return (
     <div className="border w-full ml-5">
