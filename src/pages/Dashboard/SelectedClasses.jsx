@@ -1,62 +1,71 @@
 import React from "react";
+import { useAuth } from "../../hooks/useAuth";
+import dataLoader from "../../hooks/dataLoader";
+import { FaTrashAlt } from "react-icons/fa";
+import axios from "axios";
 
 
 const SelectedClasses = () => {
-    
+    const { user } = useAuth();
+    const [loadedData, refetch] = dataLoader(`selected?email=${user?.email}`)
+    console.log(loadedData)
+    const handleDelete = (id)=>{
+        console.log(id)
+        axios.delete(`http://localhost:5000/selected/${id}`)
+        .then(res =>{
+            console.log(res)
+            if(res.data.deletedCount > 0){
+                refetch()
+            }
+        })  
+    }
   return (
-    <div className="border w-full">
+    <div className="border w-full ml-5">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+            <th>#</th>
+              <th>Class Name</th>
+              <th>Instructor</th>
+              <th>Price</th>
+              <th>Seats</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar Tailwind CSS Component"
-                      />
+          {loadedData?.map((data,index) => 
+              <tr key={data._id}>
+                <th>
+                  {index + 1}
+                </th>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={data.image}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
+                </td>
+                    <td>
+                      {data.instructor}
+                    </td>
+                <td>
+                  <span className="text-red-600">${data.price}</span>
+                </td>
+                <td>{data.seats}</td>
+                <td>
+                  <div className=" flex items-start gap-5">
+                    <button onClick={()=>handleDelete(data._id)} className="text-red-500 text-xl"><FaTrashAlt></FaTrashAlt></button>
                   </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

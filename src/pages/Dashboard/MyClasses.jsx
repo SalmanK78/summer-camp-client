@@ -2,12 +2,15 @@ import React from "react";
 import dataLoader from "../../hooks/dataLoader";
 import { useAuth } from "../../hooks/useAuth";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import axios from "axios";
 
 const MyClasses = () => {
-  // const [data] = dataLoader('selected')
-  // console.log(data)
   const { user } = useAuth();
   const [loadedData, refetch] = dataLoader(`addedclasses?email=${user?.email}`)
+  const handleDelete = (id)=>{
+    console.log(id)
+     
+}
   return (
     <div className="border w-full ml-5">
       <div className="overflow-x-auto">
@@ -24,7 +27,7 @@ const MyClasses = () => {
           </thead>
           <tbody>
             {loadedData?.map((data,index) => 
-              <tr>
+              <tr key={data._id}>
                 <th>
                   {index + 1}
                 </th>
@@ -50,7 +53,7 @@ const MyClasses = () => {
                 <td>{data.seats}</td>
                 <td>
                   <div className=" flex items-start gap-5">
-                    <button className="text-red-500 text-xl"><FaTrashAlt></FaTrashAlt></button>
+                    <button onClick={()=>handleDelete(data._id)} className="text-red-500 text-xl"><FaTrashAlt></FaTrashAlt></button>
                     <button className="text-amber-500 text-xl"><FaEdit></FaEdit></button>
                   </div>
                 </td>
