@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   return (
     
-    <div className="max-w-7xl">
+    <div className="max-w-7xl mx-auto">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
@@ -34,9 +34,10 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
+            <li><NavLink to="selectedclasses">Selected Classes</NavLink></li>
             {isInstructor &&
                 <div>
-                    <li><Link to="myclasses">My Classes</Link></li>
+                    <li><NavLink to="myclasses">My Classes</NavLink></li>
                 </div>
             }
             <div className="divider"></div>
