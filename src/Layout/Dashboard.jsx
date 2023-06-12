@@ -40,7 +40,7 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-               <li><p>User role: {userverify ? userverify:'user'}</p></li>
+               <li><p>User role: <span className="font-bold">{userverify ? userverify:'user'}</span></p></li>
             {isAdmin ? <>
               <li><NavLink to="allusers">All Users</NavLink></li>
               <li><NavLink to="requests">Requests</NavLink></li>

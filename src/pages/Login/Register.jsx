@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -9,6 +9,7 @@ const Register = () => {
     const {createUser ,updateUser} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [error,setError] = useState('')
 
     const from = location.state?.from?.pathname || "/";
 
@@ -29,6 +30,9 @@ const Register = () => {
             timer: 1500
         });
         navigate(from, { replace: true });
+       })
+       .catch(error =>{
+        setError(error.message)
        })
     };
     console.log(watch("example"));
@@ -129,38 +133,19 @@ const Register = () => {
               className="pl-2 outline-none border-none"
               type="password"
               name="password"
-              {...register("password")}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+            })}
               id="password"
               placeholder="Password"
               required
             />
           </div>
-          <div className="flex items-center border-2 py-2 px-3 rounded-2xl mt-2">
-            <div className="opacity-40">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <input
-              className="pl-2 outline-none border-none"
-              type="password"
-              name="confirm"
-              id="confirm"
-              placeholder="Confirm Passowrd"
-              required
-            />
-          </div>
+            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one capital letter and one special character.</p>}
           <p className="text-red-500"></p>
           <button
             type="submit"
@@ -168,6 +153,7 @@ const Register = () => {
           >
             Register
           </button>
+          {error && <p className="text-red-500">{error}</p>}
           <span className="text-sm ml-2  cursor-pointer">
             <Link to="/login">
               <span>Already have an acount </span>

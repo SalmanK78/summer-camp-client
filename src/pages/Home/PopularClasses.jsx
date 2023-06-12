@@ -5,11 +5,13 @@ import SectionTitle from "../shared/SectionTitle";
 
 const PopularClasses = () => {
     const [data,setData] = useState([])
-        axios.get('http://localhost:5000/popular')
+        useEffect(()=>{
+          axios.get('http://localhost:5000/popular')
         .then(res=>{
             console.log(res.data)
             setData(res.data)
         })
+        },[])
 
   return (
     <div className="mt-20">

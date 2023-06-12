@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../shared/Header";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import dataLoader from "../../hooks/dataLoader";
 
 const InstructorRequest = () => {
     const { user } = useAuth();
     const [pending,setPending] = useState('')
+    const [,refetch] = dataLoader('requests')
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  axios.get(`http://localhost:5000/pending/${user.email}`)
-  .then(res =>setPending(res.data.status))
+    useEffect(()=>{
+      axios.get(`http://localhost:5000/pending/${user.email}`)
+      .then(res =>setPending(res.data.status))
+    },[])
   const onSubmit = (data) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -24,12 +29,13 @@ const InstructorRequest = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, Send to Admin'
     }).then((result) => {
       if (result.isConfirmed) {
         const reqInfo =  {name:data.name,image:data.instructor_img,email:user?.email}
             axios.post('http://localhost:5000/requests', {reqInfo})
                 .then(data =>{
+                    refetch()
                     reset()
                     Swal.fire(
                       'Success!',
