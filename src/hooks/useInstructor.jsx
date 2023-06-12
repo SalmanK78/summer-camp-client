@@ -5,7 +5,7 @@ import axios from "axios";
 const useInstructor = () => {
     const {user} = useAuth();
     const {data:isInstructor ,isLoading:isInstructorLoading} = useQuery({
-        queryKey:['isAdmin',user?.email],
+        queryKey:['isInstructor',user?.email],
         queryFn:async()=>{
             const res = await axios.get(`http://localhost:5000/user/instructor/${user?.email}`)
             return res.data.instructor

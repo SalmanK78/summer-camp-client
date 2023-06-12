@@ -22,6 +22,8 @@ import SelectedClasses from "./pages/Dashboard/SelectedClasses";
 import InstructorRequest from "./pages/InstructorRequest/InstructorRequest";
 import Requests from "./pages/Dashboard/Requests";
 import AllUsers from "./pages/Dashboard/AllUsers";
+import InstructorRoute from "./Routes/InstructorRoute";
+import AdminRoute from "./Routes/AdminRoute";
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "instructors",
-        element: <PrivateRoute><Instructors/></PrivateRoute>,
+        element: <Instructors/>,
       },
       {
         path: "/classes",
@@ -47,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/addclasses",
-        element:<AddClasses></AddClasses>
+        element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
       },
       {
         path: "/login",
@@ -73,11 +75,11 @@ const router = createBrowserRouter([
       },
       {
         path:"requests",
-        element:<Requests/>
+        element:<AdminRoute><Requests/></AdminRoute>
       },
       {
         path:"allUsers",
-        element:<AllUsers/>
+        element:<AdminRoute><AllUsers/></AdminRoute>
       }
     ]
   },

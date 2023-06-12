@@ -3,11 +3,12 @@ import {
   FaHome,
 } from "react-icons/fa";
 import useInstructor from "../hooks/useInstructor";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
   const[isInstructor] = useInstructor()
-  const isAdmin = false;
+  const [isAdmin] = useAdmin()
 
   return (
     

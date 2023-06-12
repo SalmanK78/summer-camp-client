@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import useInstructor from "../../hooks/useInstructor";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const NavBar = () => {
     const {user,logOut} = useAuth()
     const [isInstructor] = useInstructor()
+    const [isAdmin] = useAdmin()
     console.log(isInstructor)
     const photo = 'https://pbs.twimg.com/profile_images/898054973510103040/EjHmKOk__400x400.jpg'
     const handleLogOut = () => {
@@ -19,10 +21,10 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><NavLink to="/classes">Classes</NavLink></li>
         
-        {!isInstructor && <li><NavLink to="instructorreq">Join As Instructor</NavLink></li>}
+        {!isInstructor && !isAdmin && <li><NavLink to="instructorreq">Join As Instructor</NavLink></li>}
+        <li><Link to="/instructors">Instructors</Link></li>
         {isInstructor &&
             <>
-            <li><Link to="/instructors">Instructors</Link></li>
             <li><Link to="/addclasses">Add Classes</Link></li>
             </>
         }

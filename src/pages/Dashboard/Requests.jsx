@@ -2,22 +2,59 @@ import React from "react";
 import dataLoader from "../../hooks/dataLoader";
 import { useAuth } from "../../hooks/useAuth";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Requests = () => {
   const { user } = useAuth();
   const [loadedData, refetch] = dataLoader(`requests`);
   console.log(loadedData);
   const handleAccpet=(data)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be make the user Instructor",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
         axios.post(`http://localhost:5000/accpted`,{data})
         .then(res =>{
             refetch()
+            Swal.fire(
+              'Deleted!',
+              'Usre Make Instructor success',
+              'success'
+            )
         })
+      }
+    })
+        
   }
   const handleDelete=(id)=>{
-    axios.delete(`http://localhost:5000/requests${id}`)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be Delete the user",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/requests${id}`)
         .then(res =>{
             refetch()
+            Swal.fire(
+              'Deleted!',
+              'User has been deleted.',
+              'success'
+            )
         })
+      }
+    })
+    
   }
 
   return (
