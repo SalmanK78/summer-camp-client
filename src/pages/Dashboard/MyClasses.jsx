@@ -3,6 +3,7 @@ import dataLoader from "../../hooks/dataLoader";
 import { useAuth } from "../../hooks/useAuth";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
+import SectionTitle from "../shared/SectionTitle";
 
 const MyClasses = () => {
   const { user } = useAuth();
@@ -18,6 +19,10 @@ const MyClasses = () => {
     })  
 }
   return (
+    <>
+      <div className="mb-20 mt-10">
+      <SectionTitle head={"Classes You Added"}></SectionTitle>
+      </div>
     <div className="border w-full ">
       <div className="overflow-x-auto">
         <table className="table">
@@ -25,6 +30,7 @@ const MyClasses = () => {
           <thead>
             <tr>
               <th>#</th>
+              <th>Class Image</th>
               <th>Class Name</th>
               <th>Price</th>
               <th>Seats</th>
@@ -47,12 +53,11 @@ const MyClasses = () => {
                         />
                       </div>
                     </div>
-                    <div>
-                      <div className="font-bold">Hart Hagerty</div>
-                      <div className="text-sm opacity-50">United States</div>
-                    </div>
                   </div>
                 </td>
+                    <td>
+                      {data.name}
+                    </td>
                 <td>
                   <span className="text-red-600">${data.price}</span>
                 </td>
@@ -69,6 +74,7 @@ const MyClasses = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 

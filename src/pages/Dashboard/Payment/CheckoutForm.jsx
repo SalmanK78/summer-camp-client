@@ -15,7 +15,7 @@ const CheckoutForm = ({price , cart}) => {
     const [transactionId, setTransactionId] = useState('');
 
     useEffect(()=>{
-      if(!price < 1){
+      if(price > 0){
         axios.post('http://localhost:5000/create-payment-intent',{price})
       .then(res=>{
         console.log(res.data.clientSecret)
@@ -81,7 +81,7 @@ const CheckoutForm = ({price , cart}) => {
             itms:cart.map(item => item.name)
           }
           console.log(payment)
-          axios.post('http://localhost:5000/pay',payment)
+          axios.post('http://localhost:5000/payment',payment)
           .then(res=>{
             console.log(res.data)
           })

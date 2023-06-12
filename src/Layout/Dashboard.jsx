@@ -4,9 +4,20 @@ import {
 } from "react-icons/fa";
 import useInstructor from "../hooks/useInstructor";
 import useAdmin from "../hooks/useAdmin";
+import dataLoader from "../hooks/dataLoader";
+import { useAuth } from "../hooks/useAuth";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Dashboard = () => {
-
+  const {user} = useAuth()
+  const [userverify,setUserverify]= useState()
+  useEffect(()=>{
+      fetch(`http://localhost:5000/userstatus/${user?.email}`)
+      .then(res=>res.json())
+      .then(data=>setUserverify(data?.role))
+  },[])
+  // console.log(users)
   const[isInstructor] = useInstructor()
   const [isAdmin] = useAdmin()
 
@@ -29,9 +40,11 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
+               <li><p>User role: {userverify ? userverify:'user'}</p></li>
             {isAdmin ? <>
               <li><NavLink to="allusers">All Users</NavLink></li>
               <li><NavLink to="requests">Requests</NavLink></li>
+              <li><NavLink to="allpayments">Payment History</NavLink></li>
             </>:<>
             <li><NavLink to="selectedclasses">Selected Classes</NavLink></li>
             </>
@@ -42,6 +55,7 @@ const Dashboard = () => {
                     <li><NavLink to="myclasses">My Classes</NavLink></li>
                 </div>
             }
+            <li><NavLink to="history">Payment History</NavLink></li>
             <div className="divider"></div>
             <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
             <li><NavLink to="/classes">Classes</NavLink></li>

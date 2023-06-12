@@ -50,7 +50,7 @@ const NavBar = () => {
                             {options}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Summer Camp</a>
+                    <a className="btn btn-ghost normal-case text-xl">Music School Camp</a>
                 </div>
                 <div className="navbar-center invisible lg:relative absolute lg:visible">
                     <ul className="menu menu-horizontal px-1">

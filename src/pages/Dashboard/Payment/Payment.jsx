@@ -4,10 +4,12 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import './CheckoutForm.css'
 import dataLoader from "../../../hooks/dataLoader";
+import { useAuth } from "../../../hooks/useAuth";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PK)
 const Payment = () => {
-    const [loadedData] = dataLoader('selected')
+    const {user} = useAuth();
+    const [loadedData] = dataLoader(`selected?email=${user?.email}`)
     console.log(loadedData)
     const total = loadedData.reduce((sum,item)=>sum+item.price,0)
     const price = parseFloat(total.toFixed(2))

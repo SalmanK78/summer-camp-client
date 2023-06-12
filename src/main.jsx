@@ -26,6 +26,8 @@ import InstructorRoute from "./Routes/InstructorRoute";
 import AdminRoute from "./Routes/AdminRoute";
 import ClassAddReq from "./pages/Dashboard/ClassAddReq";
 import Payment from "./pages/Dashboard/Payment/Payment";
+import PaymentHistory from "./pages/Dashboard/PaymentHistory";
+import AllPayments from "./pages/Dashboard/AllPayments";
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -90,6 +92,14 @@ const router = createBrowserRouter([
       {
         path:'payment',
         element:<Payment/>
+      },
+      {
+        path:'history',
+        element:<PaymentHistory></PaymentHistory>
+      },
+      {
+        path:'allpayments',
+        element:<AdminRoute><AllPayments/></AdminRoute>
       }
     ]
   },

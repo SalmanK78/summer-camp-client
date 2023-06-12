@@ -4,6 +4,8 @@ import dataLoader from "../../hooks/dataLoader";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import SectionTitle from "../shared/SectionTitle";
+import { Link } from "react-router-dom";
 
 
 const SelectedClasses = () => {
@@ -27,6 +29,11 @@ const SelectedClasses = () => {
         })  
     }
   return (
+    <>
+    <div className="mb-20 mt-10">
+      <SectionTitle head={"Classes You Selected"}></SectionTitle>
+      </div>
+      <button className="btn btn-primary outline-none"><Link to="/dashboard/payment">Pay</Link></button>
     <div className="border w-full">
       <div className="overflow-x-auto">
         <table className="table">
@@ -77,6 +84,7 @@ const SelectedClasses = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 
