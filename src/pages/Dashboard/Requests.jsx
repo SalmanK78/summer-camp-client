@@ -23,7 +23,7 @@ const Requests = () => {
         .then(res =>{
             refetch()
             Swal.fire(
-              'Deleted!',
+              'Success!',
               'Usre Make Instructor success',
               'success'
             )
@@ -43,7 +43,8 @@ const Requests = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/requests${id}`)
+        console.log(id)
+        axios.delete(`http://localhost:5000/requests/${id}`)
         .then(res =>{
             refetch()
             Swal.fire(

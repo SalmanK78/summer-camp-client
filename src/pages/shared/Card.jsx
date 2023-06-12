@@ -2,10 +2,13 @@ import axios from 'axios';
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import dataLoader from '../../hooks/dataLoader';
+import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
-const Card = ({data}) => {
+const Card = ({data,admin}) => {
     const {user} = useAuth();
-    const [,refetch] = dataLoader('classes')
+    const [s,refetchClasses] = dataLoader('classes')
+
     const handleSelect=(item)=>{
       if(user){
         axios.post(`http://localhost:5000/selected`,{item,email:user.email})
@@ -15,10 +18,60 @@ const Card = ({data}) => {
       axios.patch(`http://localhost:5000/classes/${id}`)
       .then(data=>{
         console.log(data)
-        refetch()
+        refetchClasses()
       })
     }
+    const handleAccpet=(data)=>{
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be Accept the request",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        console.log(data._id)
+        if (result.isConfirmed) {
+          axios.post(`http://localhost:5000/accptedclasses`,{data,id:data._id})
+          .then(res =>{
+              refetchRequest()
+              Swal.fire(
+                'Success!',
+                'Request Accepted',
+                'success'
+              )
+          })
+        }
+      })
+          
+    }
+    const handleDelete=(id)=>{
 
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be Delete the Request",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log(id)
+          axios.delete(`http://localhost:5000/accptedclasses/${id}`)
+          .then(res =>{
+              refetchRequest()
+              Swal.fire(
+                'Deleted!',
+                'Reaquest Deleted',
+                'success'
+              )
+          })
+        }
+        })
+      }
+      const zeroSeats = data.seats-data?.enroll === 0
     return (
         <>
             <div key={data.name}>
@@ -41,15 +94,34 @@ const Card = ({data}) => {
 
                     <div className="flex flex-wrap justify-starts items-center py-3 border-b-2 text-sm text-white font-medium">
                       
-                      {
+                      {!admin &&
                         <div>
                           <button onClick={()=>handleSelect(data)} className=" m-1 px-2 py-1 rounded bg-indigo-500">
                             Select
                           </button>
-                          <button disabled={data.seats-data?.enroll === 0} onClick={()=>handleEnroll(data._id)} className="m-1 px-2 py-1 rounded bg-indigo-500">
+                          <button disabled={zeroSeats} onClick={()=>handleEnroll(data._id)} className="m-1 px-2 py-1 rounded bg-indigo-500">
                             Enroll
                           </button>
                         </div>
+                      }
+                      {admin &&
+                        <div className=" flex items-start gap-5">
+                        <button onClick={()=>handleAccpet(data)} className="text-green-500 text-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+  
+                        </button>
+                        <button
+                          onClick={() => handleDelete(data._id)}
+                          className="text-red-500"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+  
+                        </button>
+                      </div>
                       }
                     </div>
                     <div className="flex items-center mt-2">

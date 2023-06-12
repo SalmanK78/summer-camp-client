@@ -9,6 +9,7 @@ const Main = () => {
         <div className='mx-auto max-w-7xl'>
             <NavBar></NavBar>
             <Outlet></Outlet>
+            
         </div>
     );
 };

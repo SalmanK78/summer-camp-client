@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import Header from "../shared/Header";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddClasses = () => {
   const { user } = useAuth();
@@ -13,12 +14,30 @@ const AddClasses = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-            const addInfo =  {instructor:data.instructor,image:data.image,name:data.name,price:data.price,instructor_img:data.instructor_img,seats:data.seats,email:user?.email}
-            console.log(addInfo)
-            axios.post('http://localhost:5000/classes', {addInfo})
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Send To Admin",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      const reqInfo =  {instructor:user.displayName,image:data.image,name:data.name,price:data.price,instructor_img:data.instructor_img,seats:data.seats,email:user?.email}
+      console.log(reqInfo)
+      if (result.isConfirmed) {
+            axios.post('http://localhost:5000/classrequests', {reqInfo})
                 .then(data =>{
                     reset()
+                    Swal.fire(
+                      'Success!',
+                      'Request Send Success',
+                      'success'
+                    )
                 })
+      }
+    })
+            
   };
   return (
     <>

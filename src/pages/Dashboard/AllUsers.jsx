@@ -47,7 +47,7 @@ const AllUsers = () => {
         axios.patch(`http://localhost:5000/isadmin/${user._id}`).then((res) => {
           refetch();
           Swal.fire(
-            'Deleted!',
+            'Success!',
             'Usre Make Admin success',
             'success'
           )

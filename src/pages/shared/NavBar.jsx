@@ -18,7 +18,7 @@ const NavBar = () => {
     }
     
     const options = <>
-        <li><Link to="/">Home</Link></li>
+        <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/classes">Classes</NavLink></li>
         
         {!isInstructor && !isAdmin && <li><NavLink to="instructorreq">Join As Instructor</NavLink></li>}

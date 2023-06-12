@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../shared/Header";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const InstructorRequest = () => {
     const { user } = useAuth();
+    const [pending,setPending] = useState('')
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+  axios.get(`http://localhost:5000/pending/${user.email}`)
+  .then(res =>setPending(res.data.status))
   const onSubmit = (data) => {
-            const reqInfo =  {name:data.name,image:data.instructor_img,email:user?.email}
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Send To Admin",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const reqInfo =  {name:data.name,image:data.instructor_img,email:user?.email}
             axios.post('http://localhost:5000/requests', {reqInfo})
                 .then(data =>{
                     reset()
+                    Swal.fire(
+                      'Success!',
+                      'Request Send Success',
+                      'success'
+                    )
                 })
+      }
+    })
+            
   };
   return (
     <div>
@@ -61,7 +83,8 @@ const InstructorRequest = () => {
 
           <input
             type="submit"
-            value="Send To Admin"
+            disabled={pending === 'pending'}
+            value={`${pending === 'pending' ? 'Request Pending':'Send To Admmin'}`}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           ></input>
         </form>
