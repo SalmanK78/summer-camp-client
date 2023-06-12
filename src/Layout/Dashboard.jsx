@@ -4,11 +4,8 @@ import {
 } from "react-icons/fa";
 import useInstructor from "../hooks/useInstructor";
 import useAdmin from "../hooks/useAdmin";
-import dataLoader from "../hooks/dataLoader";
 import { useAuth } from "../hooks/useAuth";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
 const Dashboard = () => {
   const {user} = useAuth()
   const [userverify,setUserverify]= useState()
@@ -55,7 +52,7 @@ const Dashboard = () => {
                     <li><NavLink to="myclasses">My Classes</NavLink></li>
                 </div>
             }
-            <li><NavLink to="history">Payment History</NavLink></li>
+            {!isAdmin && <li><NavLink to="history">Payment History</NavLink></li>}
             <div className="divider"></div>
             <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
             <li><NavLink to="/classes">Classes</NavLink></li>

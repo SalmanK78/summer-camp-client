@@ -9,7 +9,6 @@ import dataLoader from "../../hooks/dataLoader";
 const InstructorRequest = () => {
     const { user } = useAuth();
     const [pending,setPending] = useState('')
-    const [,refetch] = dataLoader('requests')
 
   const {
     register,
@@ -35,8 +34,8 @@ const InstructorRequest = () => {
         const reqInfo =  {name:data.name,image:data.instructor_img,email:user?.email}
             axios.post('http://localhost:5000/requests', {reqInfo})
                 .then(data =>{
-                    refetch()
                     reset()
+                    setPending('pending')
                     Swal.fire(
                       'Success!',
                       'Request Send Success',
