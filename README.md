@@ -10,6 +10,7 @@
  * ReactJs
  * Node
  * Tanstack query
+ * daisyui
 
  # Special Features/Functionality
  * MongoDB 
